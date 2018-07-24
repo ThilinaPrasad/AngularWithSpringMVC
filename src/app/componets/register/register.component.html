@@ -1,0 +1,92 @@
+<div class="container">
+  <div class="row">
+    <div class="col s6 offset-s3 valign">
+      <div class="card large" style="height: auto;">
+        <div class="card-content" style="max-height: initial;">
+          <div *ngIf="!logged">
+            <blockquote><h4 class="font_01 h1 valign-wrapper"><i class="medium material-icons">person_pin</i>&nbsp;&nbsp;Register
+            </h4>
+            </blockquote>
+            <div class="row">
+              <form class="col s12" [formGroup]="form">
+                <span *ngIf="form.errors?.regError" class="red-text">Error Happened while submitting data Please try again!</span>
+
+                <div class="row input-row">
+                  <div class="input-field col s6 ">
+                    <input id="firstname" type="text" class="validate" formControlName="firstname">
+                    <label for="firstname">First Name</label>
+                    <span class="helper-text red-text" *ngIf="firstname.touched && firstname.invalid">
+                  <span *ngIf="firstname.errors.required">First Name Required!</span>
+                  <span *ngIf="firstname.errors.whiteSpaces">Can't contain white spaces!</span>
+                    </span>
+                  </div>
+                  <div class="input-field col s6">
+                    <input id="lastname" type="text" class="validate" formControlName="lastname">
+                    <label for="lastname">Last Name</label>
+                    <span class="helper-text red-text" *ngIf="lastname.touched && lastname.invalid">
+                  <span *ngIf="lastname.errors.required">Last Name Required!</span>
+                  <span *ngIf="lastname.errors.whiteSpaces">Can't contain white spaces!</span>
+
+                    </span>
+                  </div>
+                </div>
+                <div class="row input-row">
+                  <div class="input-field col s12">
+                    <input id="email" type="email" class="validate" formControlName="email">
+                    <label for="email">Email</label>
+                    <span class="helper-text red-text" *ngIf="email.touched && email.invalid">
+                  <span *ngIf="email.errors.required">Email Required!</span>
+                    <span *ngIf="email.errors.email">Invalid Email!</span>
+                      <span *ngIf="email.errors?.emailExists || email.errors?.available">This Email Address Already Registered !</span>
+
+                    </span>
+                  </div>
+                </div>
+                <div class="row input-row">
+                  <div class="input-field col s12">
+                    <textarea id="address" class="materialize-textarea validate" formControlName="address"></textarea>
+                    <label for="address">Address</label>
+                    <span class="helper-text red-text" *ngIf="address.touched && address.invalid">
+                  <span *ngIf="address.errors.required">Address Required!</span>
+                    </span>
+                  </div>
+                </div>
+                <div class="row input-row">
+                  <div class="input-field col s12">
+                    <input id="password" type="password" class="validate" formControlName="password">
+                    <label for="password">Password</label>
+                    <span class="helper-text red-text" *ngIf="password.touched && password.invalid">
+                  <span *ngIf="password.errors.required">Password Required!</span>
+                    <span *ngIf="password.errors.minlength">Password must contain 8-16 charactors!</span>
+                    </span>
+                  </div>
+                </div>
+                <div class="row input-row">
+                  <div class="input-field col s12">
+                    <input id="cmf_password" type="password" class="validate" formControlName="cmf_password">
+                    <label for="cmf_password">Confirm Password</label>
+                    <span class="helper-text red-text" *ngIf="cmf_password.touched && cmf_password.invalid">
+                    <span *ngIf="cmf_password.errors.required">Password Required!</span>
+                    </span>
+                    <span *ngIf="password.valid && cmf_password.touched && form.errors?.cmfPassCheck"
+                          class="helper-text red-text">Password miss matched!</span>
+                  </div>
+                </div>
+                <div class="row input-row">
+                  <button type="button" class="waves-effect waves-light btn  blue-grey darken-2" (click)="submit()" (keydown.enter)="submit()"
+                          [disabled]="firstname.invalid || lastname.invalid || email.invalid || address.invalid || password.invalid || cmf_password.invalid || form.errors?.cmfPassCheck">
+                    Register
+                  </button>
+                </div>
+
+              </form>
+            </div>
+          </div>
+          <blockquote *ngIf="logged"><h5 class="font_01 h1 valign-wrapper"><i
+            class="medium material-icons">person_pin</i>&nbsp;&nbsp;You Already logged in !</h5>
+          </blockquote>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

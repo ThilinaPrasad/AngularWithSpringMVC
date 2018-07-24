@@ -1,0 +1,42 @@
+<div class="container white">
+  <h3 align="center" class="font_01">AVAILABLE USERS</h3>
+  <div class="row">
+    <nav class="col s6 offset-s3" style="padding: 0;">
+      <div class="nav-wrapper blue-grey darken-2">
+        <div class="input-field">
+          <input id="search" type="search" placeholder="Filter users..." [(ngModel)]="keyword"  (keyup)="filterUsers()" >
+          <label class="label-icon" for="search"><i class="material-icons">search</i></label>
+          <i class="material-icons" (click)="searchClear()">close</i>
+        </div>
+      </div>
+    </nav>
+  </div>
+  <table class="highlight centered" id="userData" >
+    <thead>
+    <tr>
+      <th>First name</th>
+      <th>Last name</th>
+      <th>Email</th>
+      <th>Address</th>
+      <th>Actions</th>
+    </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let user of users" id="user-row-{{user.id}}">
+          <td>{{ user.firstname }}</td>
+          <td>{{ user.lastname }}</td>
+          <td>{{ user.email }}</td>
+          <td>{{ user.address }}</td>
+          <td class="btns">
+            <a class="red-text" (click)="deleteUser(user);" title="Delete User"><i class="material-icons right">delete</i></a>
+            <a href="#" class="blue-text" title="Edit User Data"><i class="material-icons right">mode_edit</i></a>
+            <a routerLink="/profile/{{ user.id }}" class="green-text" title="View Profile"><i class="material-icons right">person_pin</i></a>
+          </td>
+        </tr>
+
+    <h2 *ngIf="!users">
+      No Users Available !
+    </h2>
+    </tbody>
+  </table>
+</div>
