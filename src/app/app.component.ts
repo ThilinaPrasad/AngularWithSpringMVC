@@ -1,4 +1,7 @@
-import { Component } from '@angular/core';
+import {Component} from '@angular/core';
+import {Title} from '@angular/platform-browser';
+import {LocalStorageService} from 'angular-web-storage';
+import {AuthenticationService} from './services/authentication.service';
 
 @Component({
   selector: 'app-root',
@@ -6,5 +9,8 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'app';
+  constructor() {
+  }
+
+
 }

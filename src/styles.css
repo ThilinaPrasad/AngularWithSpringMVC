@@ -1,1 +1,13 @@
 /* You can add global styles to this file, and also import other style files */
+body{
+  background-image: url("https://www.linkedin.com/sc/h/64xk850n3a8uzse6fi11l3vmz");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  min-height: 100vh;
+  height: auto;
+}
+
+.font_01{
+  font-family: 'Titillium Web', sans-serif;
+}
